@@ -30,6 +30,8 @@ if ! command -v kind >/dev/null 2>&1; then
   # kubectl v1.35.0 — pinned to match kind v0.31.0's default node image
   curl -LO "https://dl.k8s.io/release/v1.35.0/bin/linux/amd64/kubectl"
   chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+
+  docker --version && kind --version && kubectl version --client && envsubst --version | head -1
 fi
 
 # 1. Render manifests — single variable, no hand-typed IDs (Task 8)
