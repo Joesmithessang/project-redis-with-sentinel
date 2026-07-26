@@ -25,7 +25,6 @@ metadata:
 spec:
   serviceName: redis-hl
   replicas: 3
-  podManagementPolicy: Parallel
   selector:
     matchLabels:
       app: redis-${STUDENT_ID}

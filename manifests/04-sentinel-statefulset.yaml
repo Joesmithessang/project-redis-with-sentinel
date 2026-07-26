@@ -36,7 +36,6 @@ metadata:
 spec:
   serviceName: sentinel-hl
   replicas: 3
-  podManagementPolicy: Parallel
   selector:
     matchLabels:
       app: sentinel-${STUDENT_ID}

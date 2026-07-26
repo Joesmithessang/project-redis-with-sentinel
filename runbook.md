@@ -53,6 +53,15 @@ already run. Every command below also lives in `commands.sh`, section-tagged.
   demo depending on node drain. A Deployment self-heals the same way the
   redis/sentinel StatefulSets already do; the trade-off is addressing it as
   `deploy/redis-client` in every command instead of a literal pod name.
+- **`podManagementPolicy` is intentionally omitted from both StatefulSets (defaults
+  to `OrderedReady`).** `Parallel` was the original setting; observed directly
+  during rehearsal to put all 3 redis pods and all 3 sentinel pods on the same
+  single node, every time, because preferred anti-affinity only repels against
+  already-scheduled siblings and `Parallel` creates all pods before the
+  scheduler's cache reflects any of them. `OrderedReady` creates pods one at a
+  time, giving the scheduler real placement data before each subsequent
+  decision. Cost: bootstrap takes roughly 1-2 minutes longer, still within the
+  15-minute budget.
 
 ## 1. Bootstrap from nothing
 
