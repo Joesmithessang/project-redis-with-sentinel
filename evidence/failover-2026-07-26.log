@@ -1,0 +1,21 @@
+[start-sentinel] bootstrap master reachable
+1:X 26 Jul 2026 09:31:58.625 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:X 26 Jul 2026 09:31:58.625 * Redis version=7.4.10, bits=64, commit=00000000, modified=0, pid=1, just started
+1:X 26 Jul 2026 09:31:58.625 * Configuration loaded
+1:X 26 Jul 2026 09:31:58.625 * monotonic clock: POSIX clock_gettime
+1:X 26 Jul 2026 09:31:58.627 * Running mode=sentinel, port=26379.
+1:X 26 Jul 2026 09:31:58.634 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 09:31:58.634 * Sentinel ID is 7952ed6337161a5452d3f44102b150cfa58cab06
+1:X 26 Jul 2026 09:31:58.634 # +monitor master mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379 quorum 2
+1:X 26 Jul 2026 09:31:58.637 * +slave slave redis-jeessang-1.redis-hl.redis-jeessang.svc.cluster.local:6379 redis-jeessang-1.redis-hl.redis-jeessang.svc.cluster.local 6379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 09:31:58.642 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 09:32:02.488 * +sentinel sentinel 5978aded821002cc0b859ff31e6772fdc733395b sentinel-jeessang-1.sentinel-hl.redis-jeessang.svc.cluster.local 26379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 09:32:02.502 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 09:32:02.508 * +sentinel sentinel 9b3dccb5e0f256df1c2dc3de2be563942c0de5ac sentinel-jeessang-2.sentinel-hl.redis-jeessang.svc.cluster.local 26379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 09:32:02.518 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 09:32:08.651 * +slave slave redis-jeessang-2.redis-hl.redis-jeessang.svc.cluster.local:6379 redis-jeessang-2.redis-hl.redis-jeessang.svc.cluster.local 6379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 09:32:08.664 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 09:52:42.579 # Failed to resolve hostname 'sentinel-jeessang-1.sentinel-hl.redis-jeessang.svc.cluster.local'
+1:X 26 Jul 2026 09:52:45.130 * +sentinel-invalid-addr sentinel 5978aded821002cc0b859ff31e6772fdc733395b sentinel-jeessang-1.sentinel-hl.redis-jeessang.svc.cluster.local 26379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 09:52:45.131 * +sentinel sentinel 3966341944895ca9ac4fdb88cfde73488ef5a53a sentinel-jeessang-1.sentinel-hl.redis-jeessang.svc.cluster.local 26379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 09:52:45.141 * Sentinel new configuration saved on disk

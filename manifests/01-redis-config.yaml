@@ -18,6 +18,9 @@ data:
     MY_FQDN="$HOSTNAME.redis-hl.${NS}.svc.cluster.local"
     echo "[start-redis] I am $MY_FQDN"
 
+    # Deliberate startup delay
+    sleep 8
+
     MASTER_HOST=""
     i=0
     while [ $i -lt 5 ]; do
@@ -40,6 +43,7 @@ data:
     replica-read-only yes
     replica-announce-ip $MY_FQDN
     replica-announce-port 6379
+    enable-debug-command local
     CFG
 
     if [ "$MASTER_HOST" = "$MY_FQDN" ]; then
