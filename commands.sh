@@ -14,7 +14,7 @@ export NS=redis-${STUDENT_ID}
 export MASTER_NAME=mymaster-${STUDENT_ID}
 
 ########################################################
-# 0) Verify the cluster (mirrors "Cluster is ready" in the Week 10 deck)
+# 0) Verify the cluster
 ########################################################
 kubectl get nodes -o wide                        # control-plane + 2 workers, all Ready
 kubectl get pods -n "$NS" -o wide                 # 3 redis + 3 sentinel + redis-client, Running
@@ -72,7 +72,7 @@ kubectl -n "$NS" exec "$POD" -- redis-cli -h 127.0.0.1 debug sleep 60
 # method 3 - drain the node the master is on:
 NODE=$(kubectl -n "$NS" get pod "$POD" -o jsonpath='{.spec.nodeName}')
 kubectl drain "$NODE" --ignore-daemonsets --delete-emptydir-data --force
-kubectl uncordon "$NODE"                          # run once you're done rehearsing
+kubectl uncordon "$NODE"
 
 ########################################################
 # PART 6 - Verify data after failover and count losses

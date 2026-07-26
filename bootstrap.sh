@@ -12,14 +12,24 @@ START=$(date +%s)
 
 # 0. Host prerequisites (run once per host; comment out after first run)
 if ! command -v kind >/dev/null 2>&1; then
-  echo "installing kind, kubectl, envsubst"
-  sudo apt-get update
-  sudo apt-get install -y docker.io gettext-base
+  echo "installing docker-ce, kind v0.31.0, kubectl v1.35.0"
+
+  sudo apt-get update && sudo apt-get install -y ca-certificates curl gettext-base
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+    | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  sudo apt-get update && sudo apt-get install -y docker-ce docker-ce-cli containerd.io
   sudo usermod -aG docker "$USER"
-  curl -LO "https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-  curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.23.0/kind-linux-amd64
+  newgrp docker
+
+  # install kind v0.31.0, pinned — so every run uses the exact same version.
+  curl -sLo kind https://kind.sigs.k8s.io/dl/v0.31.0/kind-linux-amd64
   sudo install -o root -g root -m 0755 kind /usr/local/bin/kind
+
+  # kubectl v1.35.0 — pinned to match kind v0.31.0's default node image
+  curl -LO "https://dl.k8s.io/release/v1.35.0/bin/linux/amd64/kubectl"
+  chmod +x kubectl && sudo mv kubectl /usr/local/bin/
 fi
 
 # 1. Render manifests — single variable, no hand-typed IDs (Task 8)
