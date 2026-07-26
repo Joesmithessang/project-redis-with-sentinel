@@ -1,0 +1,31 @@
+[start-sentinel] bootstrap master reachable
+1:X 26 Jul 2026 18:17:07.377 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:X 26 Jul 2026 18:17:07.377 * Redis version=7.4.10, bits=64, commit=00000000, modified=0, pid=1, just started
+1:X 26 Jul 2026 18:17:07.377 * Configuration loaded
+1:X 26 Jul 2026 18:17:07.378 * monotonic clock: POSIX clock_gettime
+1:X 26 Jul 2026 18:17:07.379 * Running mode=sentinel, port=26379.
+1:X 26 Jul 2026 18:17:07.386 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 18:17:07.386 * Sentinel ID is 57b14aaa70266298b4c5ac12da83b88619fdf09f
+1:X 26 Jul 2026 18:17:07.386 # +monitor master mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379 quorum 2
+1:X 26 Jul 2026 18:17:12.978 * +sentinel sentinel 7c780d0e56101abc95e1c8f44d23f921617c74df sentinel-jeessang-1.sentinel-hl.redis-jeessang.svc.cluster.local 26379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 18:17:12.985 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 18:17:25.389 * +sentinel sentinel f207923107208dda1251130e4d298b935f3fe0d6 sentinel-jeessang-2.sentinel-hl.redis-jeessang.svc.cluster.local 26379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 18:17:25.399 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 18:17:27.510 * +slave slave redis-jeessang-1.redis-hl.redis-jeessang.svc.cluster.local:6379 redis-jeessang-1.redis-hl.redis-jeessang.svc.cluster.local 6379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 18:17:27.519 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 18:17:37.606 * +slave slave redis-jeessang-2.redis-hl.redis-jeessang.svc.cluster.local:6379 redis-jeessang-2.redis-hl.redis-jeessang.svc.cluster.local 6379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 18:17:37.612 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 18:23:56.327 # +sdown master mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 18:23:57.046 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 18:23:57.046 # +new-epoch 1
+1:X 26 Jul 2026 18:23:57.055 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 18:23:57.055 # +vote-for-leader 7c780d0e56101abc95e1c8f44d23f921617c74df 1
+1:X 26 Jul 2026 18:23:57.449 # +odown master mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379 #quorum 3/2
+1:X 26 Jul 2026 18:23:57.449 * Next failover delay: I will not start a failover before Sun Jul 26 18:24:27 2026
+1:X 26 Jul 2026 18:23:57.877 # +config-update-from sentinel 7c780d0e56101abc95e1c8f44d23f921617c74df sentinel-jeessang-1.sentinel-hl.redis-jeessang.svc.cluster.local 26379 @ mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 18:23:57.877 # +switch-master mymaster-jeessang redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379 redis-jeessang-1.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 18:23:57.881 * +slave slave redis-jeessang-2.redis-hl.redis-jeessang.svc.cluster.local:6379 redis-jeessang-2.redis-hl.redis-jeessang.svc.cluster.local 6379 @ mymaster-jeessang redis-jeessang-1.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 18:23:57.881 * +slave slave redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local:6379 redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379 @ mymaster-jeessang redis-jeessang-1.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 18:23:57.889 * Sentinel new configuration saved on disk
+1:X 26 Jul 2026 18:24:02.929 # +sdown slave redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local:6379 redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379 @ mymaster-jeessang redis-jeessang-1.redis-hl.redis-jeessang.svc.cluster.local 6379
+1:X 26 Jul 2026 18:24:51.332 # -sdown slave redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local:6379 redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local 6379 @ mymaster-jeessang redis-jeessang-1.redis-hl.redis-jeessang.svc.cluster.local 6379

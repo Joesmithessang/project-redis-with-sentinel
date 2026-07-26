@@ -1,0 +1,134 @@
+Script started on 2026-07-26 18:38:23+00:00 [COMMAND="./bootstrap.sh jeessang" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="123" LINES="25"]
++ STUDENT_ID=jeessang
++ export STUDENT_ID
++ NS=redis-jeessang
++ CLUSTER=redis-lab
+++ date +%s
++ START=1785091103
++ command -v kind
++ echo '== [1/5] rendering manifests for jeessang =='
+== [1/5] rendering manifests for jeessang ==
++ rm -rf manifests/rendered
++ mkdir -p manifests/rendered evidence
++ for f in manifests/*.yaml
+++ basename manifests/00-namespace.yaml
++ base=00-namespace.yaml
++ '[' 00-namespace.yaml = kind-config.yaml ']'
++ envsubst '${STUDENT_ID}'
++ for f in manifests/*.yaml
+++ basename manifests/01-redis-config.yaml
++ base=01-redis-config.yaml
++ '[' 01-redis-config.yaml = kind-config.yaml ']'
++ envsubst '${STUDENT_ID}'
++ for f in manifests/*.yaml
+++ basename manifests/02-redis-statefulset.yaml
++ base=02-redis-statefulset.yaml
++ '[' 02-redis-statefulset.yaml = kind-config.yaml ']'
++ envsubst '${STUDENT_ID}'
++ for f in manifests/*.yaml
+++ basename manifests/03-sentinel-config.yaml
++ base=03-sentinel-config.yaml
++ '[' 03-sentinel-config.yaml = kind-config.yaml ']'
++ envsubst '${STUDENT_ID}'
++ for f in manifests/*.yaml
+++ basename manifests/04-sentinel-statefulset.yaml
++ base=04-sentinel-statefulset.yaml
++ '[' 04-sentinel-statefulset.yaml = kind-config.yaml ']'
++ envsubst '${STUDENT_ID}'
++ for f in manifests/*.yaml
+++ basename manifests/05-client-pod.yaml
++ base=05-client-pod.yaml
++ '[' 05-client-pod.yaml = kind-config.yaml ']'
++ envsubst '${STUDENT_ID}'
++ for f in manifests/*.yaml
+++ basename manifests/06-seed-job.yaml
++ base=06-seed-job.yaml
++ '[' 06-seed-job.yaml = kind-config.yaml ']'
++ envsubst '${STUDENT_ID}'
++ for f in manifests/*.yaml
+++ basename manifests/kind-config.yaml
++ base=kind-config.yaml
++ '[' kind-config.yaml = kind-config.yaml ']'
++ continue
++ echo '== [2/5] creating kind cluster =='
+== [2/5] creating kind cluster ==
++ kind get clusters
++ grep -qx redis-lab
+No kind clusters found.
++ kind create cluster --name redis-lab --config manifests/kind-config.yaml
+Creating cluster "redis-lab" ...
+ [32m✓[0m Ensuring node image (kindest/node:v1.35.0) 🖼
+[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h [32m✓[0m Preparing nodes 📦 📦 📦 
+[?7l⠈⠁ Writing configuration 📜 [?7h[?7l⠈⠑ Writing configuration 📜 [?7h[?7l⠈⠱ Writing configuration 📜 [?7h[?7l⠈⡱ Writing configuration 📜 [?7h[?7l⢀⡱ Writing configuration 📜 [?7h[?7l⢄⡱ Writing configuration 📜 [?7h [32m✓[0m Writing configuration 📜
+[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h [32m✓[0m Starting control-plane 🕹️
+[?7l⠈⠁ Installing CNI 🔌 [?7h[?7l⠈⠑ Installing CNI 🔌 [?7h[?7l⠈⠱ Installing CNI 🔌 [?7h[?7l⠈⡱ Installing CNI 🔌 [?7h[?7l⢀⡱ Installing CNI 🔌 [?7h[?7l⢄⡱ Installing CNI 🔌 [?7h[?7l⢄⡱ Installing CNI 🔌 [?7h[?7l⢆⡱ Installing CNI 🔌 [?7h[?7l⢎⡱ Installing CNI 🔌 [?7h[?7l⢎⡰ Installing CNI 🔌 [?7h[?7l⢎⡠ Installing CNI 🔌 [?7h [32m✓[0m Installing CNI 🔌
+[?7l⠈⠁ Installing StorageClass 💾 [?7h[?7l⠈⠑ Installing StorageClass 💾 [?7h[?7l⠈⠱ Installing StorageClass 💾 [?7h[?7l⠈⡱ Installing StorageClass 💾 [?7h[?7l⢀⡱ Installing StorageClass 💾 [?7h[?7l⢄⡱ Installing StorageClass 💾 [?7h [32m✓[0m Installing StorageClass 💾
+[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h [32m✓[0m Joining worker nodes 🚜
+Set kubectl context to "kind-redis-lab"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-redis-lab
+
+Have a nice day! 👋
++ kubectl cluster-info --context kind-redis-lab
++ echo '== [3/5] applying manifests to namespace redis-jeessang =='
+== [3/5] applying manifests to namespace redis-jeessang ==
++ kubectl apply -f manifests/rendered/00-namespace.yaml
+namespace/redis-jeessang created
++ kubectl apply -n redis-jeessang -f manifests/rendered/01-redis-config.yaml
+configmap/redis-config-jeessang created
++ kubectl apply -n redis-jeessang -f manifests/rendered/02-redis-statefulset.yaml
+service/redis-hl created
+statefulset.apps/redis-jeessang created
++ kubectl apply -n redis-jeessang -f manifests/rendered/03-sentinel-config.yaml
+configmap/sentinel-config-jeessang created
++ kubectl apply -n redis-jeessang -f manifests/rendered/04-sentinel-statefulset.yaml
+service/sentinel-hl created
+service/sentinel-svc created
+statefulset.apps/sentinel-jeessang created
++ kubectl apply -n redis-jeessang -f manifests/rendered/05-client-pod.yaml
+deployment.apps/redis-client created
++ echo '== [4/5] waiting for readiness =='
+== [4/5] waiting for readiness ==
++ kubectl -n redis-jeessang rollout status statefulset/redis-jeessang --timeout=420s
+Waiting for 3 pods to be ready...
+Waiting for 2 pods to be ready...
+Waiting for 2 pods to be ready...
+Waiting for 1 pods to be ready...
+Waiting for 1 pods to be ready...
+partitioned roll out complete: 3 new pods have been updated...
++ kubectl -n redis-jeessang rollout status statefulset/sentinel-jeessang --timeout=420s
+partitioned roll out complete: 3 new pods have been updated...
++ kubectl -n redis-jeessang wait --for=condition=Available deployment/redis-client --timeout=180s
+deployment.apps/redis-client condition met
++ echo '== [5/5] seeding =='
+== [5/5] seeding ==
++ kubectl apply -n redis-jeessang -f manifests/rendered/06-seed-job.yaml
+job.batch/seed-jeessang created
++ kubectl -n redis-jeessang wait --for=condition=complete job/seed-jeessang --timeout=300s
+job.batch/seed-jeessang condition met
+++ date +%s
++ END=1785091219
++ ELAPSED=116
++ kubectl -n redis-jeessang get pods -o wide
+NAME                            READY   STATUS      RESTARTS   AGE   IP           NODE                NOMINATED NODE   READINESS GATES
+redis-client-54494dbc66-g4h75   1/1     Running     0          69s   10.244.1.2   redis-lab-worker2   <none>           <none>
+redis-jeessang-0                1/1     Running     0          72s   10.244.1.4   redis-lab-worker2   <none>           <none>
+redis-jeessang-1                1/1     Running     0          34s   10.244.2.3   redis-lab-worker    <none>           <none>
+redis-jeessang-2                1/1     Running     0          19s   10.244.1.5   redis-lab-worker2   <none>           <none>
+seed-jeessang-gsp4t             0/1     Completed   0          4s    10.244.2.5   redis-lab-worker    <none>           <none>
+sentinel-jeessang-0             1/1     Running     0          70s   10.244.1.3   redis-lab-worker2   <none>           <none>
+sentinel-jeessang-1             1/1     Running     0          34s   10.244.2.2   redis-lab-worker    <none>           <none>
+sentinel-jeessang-2             1/1     Running     0          20s   10.244.2.4   redis-lab-worker    <none>           <none>
+++ kubectl -n redis-jeessang exec deploy/redis-client -- redis-cli -h sentinel-svc -p 26379 --raw sentinel get-master-addr-by-name mymaster-jeessang
+++ head -n1
++ echo 'MASTER: redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local'
+MASTER: redis-jeessang-0.redis-hl.redis-jeessang.svc.cluster.local
++ tee -a evidence/bootstrap-timing.log
+++ date -Is
++ printf 'bootstrap %s completed in %s seconds (%s)\n' jeessang 116 2026-07-26T18:40:19+00:00
+bootstrap jeessang completed in 116 seconds (2026-07-26T18:40:19+00:00)
++ echo 'Prerequisites built, cluster seeded.'
+Prerequisites built, cluster seeded.
+
+Script done on 2026-07-26 18:40:19+00:00 [COMMAND_EXIT_CODE="0"]
