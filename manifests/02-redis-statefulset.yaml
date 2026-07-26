@@ -1,0 +1,70 @@
+# Project 4 — StatefulSet with per-pod stable DNS via a headless Service (Task 2).
+# publishNotReadyAddresses: true — same "expected/on purpose" callout style as
+# redis_pvc.yaml's WaitForFirstConsumer note: without this, pod -1 gets NXDOMAIN
+# trying to resolve pod -0 during a cold boot, because -0 isn't Ready yet.
+# No volumeClaimTemplates here (contrast with kubia-statefulset.yaml) — this
+# project intentionally uses emptyDir, see 01-redis-config.yaml's persistence note.
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-hl
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  selector:
+    app: redis-${STUDENT_ID}
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: 6379
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-${STUDENT_ID}
+spec:
+  serviceName: redis-hl
+  replicas: 3
+  podManagementPolicy: Parallel
+  selector:
+    matchLabels:
+      app: redis-${STUDENT_ID}
+  template:
+    metadata:
+      labels:
+        app: redis-${STUDENT_ID}
+    spec:
+      terminationGracePeriodSeconds: 5
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    app: redis-${STUDENT_ID}
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          imagePullPolicy: IfNotPresent
+          command: ["sh", "/scripts/start-redis.sh"]
+          ports:
+            - name: redis
+              containerPort: 6379
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "redis-cli -h 127.0.0.1 ping | grep -q PONG"]
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: scripts
+          configMap:
+            name: redis-config-${STUDENT_ID}
+        - name: data
+          emptyDir: {}

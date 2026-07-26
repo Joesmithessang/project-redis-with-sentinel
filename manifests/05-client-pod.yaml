@@ -1,0 +1,15 @@
+# Project 4 — the ONLY place redis-cli exists: spec says "redis-cli runs inside
+# the pods - do not install it on the host." Every check in commands.sh runs
+# through this pod via kubectl exec
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-client
+  labels:
+    app: redis-client-${STUDENT_ID}
+spec:
+  containers:
+    - name: cli
+      image: redis:7-alpine
+      imagePullPolicy: IfNotPresent
+      command: ["sh", "-c", "sleep infinity"]

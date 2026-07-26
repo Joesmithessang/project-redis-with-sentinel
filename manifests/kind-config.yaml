@@ -1,0 +1,9 @@
+# Project 4 — local cluster, no cloud dependency.
+# 1 control-plane + 2 workers, per the spec's Architecture and Environment section.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: redis-lab
+nodes:
+  - role: control-plane
+  - role: worker
+  - role: worker

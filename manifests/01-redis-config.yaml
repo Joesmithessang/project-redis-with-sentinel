@@ -1,0 +1,51 @@
+# Project 4 - startup script that decides master vs replica by asking Sentinel
+# first and falling back to pod-ordinal only on a cold cluster (Task 2).
+# save "" / appendonly no: no persistence, same "expected" callout style as the
+# state is meant to rebuild from replication, 
+# and not survive a pod restart, so a returning old master can't resurrect stale data.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-config-${STUDENT_ID}
+data:
+  start-redis.sh: |
+    #!/bin/sh
+    set -eu
+    MASTER_NAME="mymaster-${STUDENT_ID}"
+    NS="redis-${STUDENT_ID}"
+    SENTINEL="sentinel-svc.${NS}.svc.cluster.local"
+    BOOTSTRAP_MASTER="redis-${STUDENT_ID}-0.redis-hl.${NS}.svc.cluster.local"
+    MY_FQDN="$HOSTNAME.redis-hl.${NS}.svc.cluster.local"
+    echo "[start-redis] I am $MY_FQDN"
+
+    MASTER_HOST=""
+    i=0
+    while [ $i -lt 5 ]; do
+      ADDR=$(redis-cli -h "$SENTINEL" -p 26379 --raw \
+             sentinel get-master-addr-by-name "$MASTER_NAME" 2>/dev/null | head -n1 || true)
+      if [ -n "$ADDR" ]; then MASTER_HOST="$ADDR"; echo "[start-redis] Sentinel says master is $MASTER_HOST"; break; fi
+      i=$((i+1)); sleep 2
+    done
+    if [ -z "$MASTER_HOST" ]; then
+      echo "[start-redis] no Sentinel answer; cold-boot rule by pod ordinal"
+      MASTER_HOST="$BOOTSTRAP_MASTER"
+    fi
+
+    CONF=/data/redis.conf
+    cat > "$CONF" <<CFG
+    port 6379
+    dir /data
+    appendonly no
+    save ""
+    replica-read-only yes
+    replica-announce-ip $MY_FQDN
+    replica-announce-port 6379
+    CFG
+
+    if [ "$MASTER_HOST" = "$MY_FQDN" ]; then
+      echo "[start-redis] role=MASTER"
+    else
+      echo "[start-redis] role=REPLICA of $MASTER_HOST"
+      echo "replicaof $MASTER_HOST 6379" >> "$CONF"
+    fi
+    exec redis-server "$CONF"

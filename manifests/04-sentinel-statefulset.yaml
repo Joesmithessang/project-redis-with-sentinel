@@ -1,0 +1,77 @@
+# Project 4 — Sentinel workload (Task 3). StatefulSet chosen over Deployment
+# and justified in runbook.md #0: Sentinels identify each other by announced
+# address and persist peer state in their own rewritten config, so a restarted
+# Sentinel needs to come back as the SAME Sentinel, not a new one with a fresh
+# identity — a StatefulSet + headless Service gives that stable DNS name.
+apiVersion: v1
+kind: Service
+metadata:
+  name: sentinel-hl
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  selector:
+    app: sentinel-${STUDENT_ID}
+  ports:
+    - name: sentinel
+      port: 26379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sentinel-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: sentinel-${STUDENT_ID}
+  ports:
+    - name: sentinel
+      port: 26379
+      targetPort: 26379
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sentinel-${STUDENT_ID}
+spec:
+  serviceName: sentinel-hl
+  replicas: 3
+  podManagementPolicy: Parallel
+  selector:
+    matchLabels:
+      app: sentinel-${STUDENT_ID}
+  template:
+    metadata:
+      labels:
+        app: sentinel-${STUDENT_ID}
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+        - name: sentinel
+          image: redis:7-alpine
+          imagePullPolicy: IfNotPresent
+          command: ["sh", "/scripts/start-sentinel.sh"]
+          ports:
+            - name: sentinel
+              containerPort: 26379
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "redis-cli -h 127.0.0.1 -p 26379 ping | grep -q PONG"]
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+            - name: src
+              mountPath: /etc/sentinel-src
+            - name: runtime
+              mountPath: /etc/sentinel
+      volumes:
+        - name: scripts
+          configMap:
+            name: sentinel-config-${STUDENT_ID}
+        - name: src
+          configMap:
+            name: sentinel-config-${STUDENT_ID}
+        - name: runtime
+          emptyDir: {}

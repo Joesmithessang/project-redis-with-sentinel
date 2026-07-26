@@ -1,0 +1,41 @@
+# Project 4 — Sentinel config (Task 4): quorum 2, down-after-milliseconds 5000,
+# failover-timeout 15000, parallel-syncs 1 — exactly the four required directives.
+# Sentinel rewrites its own config file at runtime, so the ConfigMap is copied to
+# a writable emptyDir before redis-sentinel starts (a direct ConfigMap mount is
+# read-only and Sentinel's rewrite fails on it — see runbook.md #0 for the
+# exact error observed).
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sentinel-config-${STUDENT_ID}
+data:
+  sentinel.conf: |
+    port 26379
+    dir /tmp
+    sentinel resolve-hostnames yes
+    sentinel announce-hostnames yes
+    sentinel monitor mymaster-${STUDENT_ID} redis-${STUDENT_ID}-0.redis-hl.redis-${STUDENT_ID}.svc.cluster.local 6379 2
+    sentinel down-after-milliseconds mymaster-${STUDENT_ID} 5000
+    sentinel failover-timeout mymaster-${STUDENT_ID} 15000
+    sentinel parallel-syncs mymaster-${STUDENT_ID} 1
+
+  start-sentinel.sh: |
+    #!/bin/sh
+    set -eu
+    NS="redis-${STUDENT_ID}"
+    MASTER="redis-${STUDENT_ID}-0.redis-hl.${NS}.svc.cluster.local"
+    MY_FQDN="$HOSTNAME.sentinel-hl.${NS}.svc.cluster.local"
+
+    cp /etc/sentinel-src/sentinel.conf /etc/sentinel/sentinel.conf
+    chmod 0660 /etc/sentinel/sentinel.conf
+    echo "sentinel announce-ip $MY_FQDN" >> /etc/sentinel/sentinel.conf
+    echo "sentinel announce-port 26379"  >> /etc/sentinel/sentinel.conf
+
+    i=0
+    while [ $i -lt 60 ]; do
+      if redis-cli -h "$MASTER" -p 6379 ping 2>/dev/null | grep -q PONG; then
+        echo "[start-sentinel] bootstrap master reachable"; break
+      fi
+      i=$((i+1)); sleep 2
+    done
+    exec redis-sentinel /etc/sentinel/sentinel.conf

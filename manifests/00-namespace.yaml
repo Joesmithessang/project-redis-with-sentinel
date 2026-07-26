@@ -1,0 +1,6 @@
+# Every resource in this project lives here
+# Applied on its own, then everything else is applied with -n redis-${STUDENT_ID},
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: redis-${STUDENT_ID}
