@@ -57,13 +57,409 @@ Script started on 2026-07-26 18:38:23+00:00 [COMMAND="./bootstrap.sh jeessang" T
 No kind clusters found.
 + kind create cluster --name redis-lab --config manifests/kind-config.yaml
 Creating cluster "redis-lab" ...
- [32m✓[0m Ensuring node image (kindest/node:v1.35.0) 🖼
-[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l⢎⠁ Preparing nodes 📦 📦 📦  [?7h [32m✓[0m Preparing nodes 📦 📦 📦 
-[?7l⠈⠁ Writing configuration 📜 [?7h[?7l⠈⠑ Writing configuration 📜 [?7h[?7l⠈⠱ Writing configuration 📜 [?7h[?7l⠈⡱ Writing configuration 📜 [?7h[?7l⢀⡱ Writing configuration 📜 [?7h[?7l⢄⡱ Writing configuration 📜 [?7h [32m✓[0m Writing configuration 📜
-[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h[?7l⠈⡱ Starting control-plane 🕹️ [?7h[?7l⢀⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢄⡱ Starting control-plane 🕹️ [?7h[?7l⢆⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡱ Starting control-plane 🕹️ [?7h[?7l⢎⡰ Starting control-plane 🕹️ [?7h[?7l⢎⡠ Starting control-plane 🕹️ [?7h[?7l⢎⡀ Starting control-plane 🕹️ [?7h[?7l⢎⠁ Starting control-plane 🕹️ [?7h[?7l⠎⠁ Starting control-plane 🕹️ [?7h[?7l⠊⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠁ Starting control-plane 🕹️ [?7h[?7l⠈⠑ Starting control-plane 🕹️ [?7h[?7l⠈⠱ Starting control-plane 🕹️ [?7h [32m✓[0m Starting control-plane 🕹️
-[?7l⠈⠁ Installing CNI 🔌 [?7h[?7l⠈⠑ Installing CNI 🔌 [?7h[?7l⠈⠱ Installing CNI 🔌 [?7h[?7l⠈⡱ Installing CNI 🔌 [?7h[?7l⢀⡱ Installing CNI 🔌 [?7h[?7l⢄⡱ Installing CNI 🔌 [?7h[?7l⢄⡱ Installing CNI 🔌 [?7h[?7l⢆⡱ Installing CNI 🔌 [?7h[?7l⢎⡱ Installing CNI 🔌 [?7h[?7l⢎⡰ Installing CNI 🔌 [?7h[?7l⢎⡠ Installing CNI 🔌 [?7h [32m✓[0m Installing CNI 🔌
-[?7l⠈⠁ Installing StorageClass 💾 [?7h[?7l⠈⠑ Installing StorageClass 💾 [?7h[?7l⠈⠱ Installing StorageClass 💾 [?7h[?7l⠈⡱ Installing StorageClass 💾 [?7h[?7l⢀⡱ Installing StorageClass 💾 [?7h[?7l⢄⡱ Installing StorageClass 💾 [?7h [32m✓[0m Installing StorageClass 💾
-[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h[?7l⢆⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡱ Joining worker nodes 🚜 [?7h[?7l⢎⡰ Joining worker nodes 🚜 [?7h[?7l⢎⡠ Joining worker nodes 🚜 [?7h[?7l⢎⡀ Joining worker nodes 🚜 [?7h[?7l⢎⠁ Joining worker nodes 🚜 [?7h[?7l⠎⠁ Joining worker nodes 🚜 [?7h[?7l⠊⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠁ Joining worker nodes 🚜 [?7h[?7l⠈⠑ Joining worker nodes 🚜 [?7h[?7l⠈⠱ Joining worker nodes 🚜 [?7h[?7l⠈⡱ Joining worker nodes 🚜 [?7h[?7l⢀⡱ Joining worker nodes 🚜 [?7h[?7l⢄⡱ Joining worker nodes 🚜 [?7h [32m✓[0m Joining worker nodes 🚜
+
+ [32m✓[0m Ensuring node image (kindest/node:v1.35.0) 🖼
+[?7l
+⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠎⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠊⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠁ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠑ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⠱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⠈⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢀⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢄⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢆⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡱ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡰ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡠ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⡀ Preparing nodes 📦 📦 📦  [?7h[?7l
+⢎⠁ Preparing nodes 📦 📦 📦  [?7h
+ [32m✓[0m Preparing nodes 📦 📦 📦 
+[?7l
+⠈⠁ Writing configuration 📜 [?7h[?7l
+⠈⠑ Writing configuration 📜 [?7h[?7l
+⠈⠱ Writing configuration 📜 [?7h[?7l
+⠈⡱ Writing configuration 📜 [?7h[?7l
+⢀⡱ Writing configuration 📜 [?7h[?7l
+⢄⡱ Writing configuration 📜 [?7h
+ [32m✓[0m Writing configuration 📜
+[?7l
+⠈⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠑ Starting control-plane 🕹️ [?7h[?7l
+⠈⠱ Starting control-plane 🕹️ [?7h[?7l
+⠈⡱ Starting control-plane 🕹️ [?7h[?7l
+⢀⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢆⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡰ Starting control-plane 🕹️ [?7h[?7l
+⢎⡠ Starting control-plane 🕹️ [?7h[?7l
+⢎⡀ Starting control-plane 🕹️ [?7h[?7l
+⢎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠊⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠑ Starting control-plane 🕹️ [?7h[?7l
+⠈⠱ Starting control-plane 🕹️ [?7h[?7l
+⠈⡱ Starting control-plane 🕹️ [?7h[?7l
+⢀⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢆⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡰ Starting control-plane 🕹️ [?7h[?7l
+⢎⡠ Starting control-plane 🕹️ [?7h[?7l
+⢎⡀ Starting control-plane 🕹️ [?7h[?7l
+⢎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠊⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠑ Starting control-plane 🕹️ [?7h[?7l
+⠈⠱ Starting control-plane 🕹️ [?7h[?7l
+⠈⡱ Starting control-plane 🕹️ [?7h[?7l
+⢀⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢆⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡰ Starting control-plane 🕹️ [?7h[?7l
+⢎⡠ Starting control-plane 🕹️ [?7h[?7l
+⢎⡀ Starting control-plane 🕹️ [?7h[?7l
+⢎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠊⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠑ Starting control-plane 🕹️ [?7h[?7l
+⠈⠱ Starting control-plane 🕹️ [?7h[?7l
+⠈⡱ Starting control-plane 🕹️ [?7h[?7l
+⢀⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢆⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡰ Starting control-plane 🕹️ [?7h[?7l
+⢎⡠ Starting control-plane 🕹️ [?7h[?7l
+⢎⡀ Starting control-plane 🕹️ [?7h[?7l
+⢎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠊⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠑ Starting control-plane 🕹️ [?7h[?7l
+⠈⠱ Starting control-plane 🕹️ [?7h[?7l
+⠈⡱ Starting control-plane 🕹️ [?7h[?7l
+⢀⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢆⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡰ Starting control-plane 🕹️ [?7h[?7l
+⢎⡠ Starting control-plane 🕹️ [?7h[?7l
+⢎⡀ Starting control-plane 🕹️ [?7h[?7l
+⢎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠊⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠑ Starting control-plane 🕹️ [?7h[?7l
+⠈⠱ Starting control-plane 🕹️ [?7h[?7l
+⠈⡱ Starting control-plane 🕹️ [?7h[?7l
+⢀⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢆⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡰ Starting control-plane 🕹️ [?7h[?7l
+⢎⡠ Starting control-plane 🕹️ [?7h[?7l
+⢎⡀ Starting control-plane 🕹️ [?7h[?7l
+⢎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠊⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠑ Starting control-plane 🕹️ [?7h[?7l
+⠈⠱ Starting control-plane 🕹️ [?7h[?7l
+⠈⡱ Starting control-plane 🕹️ [?7h[?7l
+⢀⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢆⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡰ Starting control-plane 🕹️ [?7h[?7l
+⢎⡠ Starting control-plane 🕹️ [?7h[?7l
+⢎⡀ Starting control-plane 🕹️ [?7h[?7l
+⢎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠊⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠑ Starting control-plane 🕹️ [?7h[?7l
+⠈⠱ Starting control-plane 🕹️ [?7h[?7l
+⠈⡱ Starting control-plane 🕹️ [?7h[?7l
+⢀⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢄⡱ Starting control-plane 🕹️ [?7h[?7l
+⢆⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡱ Starting control-plane 🕹️ [?7h[?7l
+⢎⡰ Starting control-plane 🕹️ [?7h[?7l
+⢎⡠ Starting control-plane 🕹️ [?7h[?7l
+⢎⡀ Starting control-plane 🕹️ [?7h[?7l
+⢎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠎⠁ Starting control-plane 🕹️ [?7h[?7l
+⠊⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠁ Starting control-plane 🕹️ [?7h[?7l
+⠈⠑ Starting control-plane 🕹️ [?7h[?7l
+⠈⠱ Starting control-plane 🕹️ [?7h
+ [32m✓[0m Starting control-plane 🕹️
+[?7l
+⠈⠁ Installing CNI 🔌 [?7h[?7l
+⠈⠑ Installing CNI 🔌 [?7h[?7l
+⠈⠱ Installing CNI 🔌 [?7h[?7l
+⠈⡱ Installing CNI 🔌 [?7h[?7l
+⢀⡱ Installing CNI 🔌 [?7h[?7l
+⢄⡱ Installing CNI 🔌 [?7h[?7l
+⢄⡱ Installing CNI 🔌 [?7h[?7l
+⢆⡱ Installing CNI 🔌 [?7h[?7l
+⢎⡱ Installing CNI 🔌 [?7h[?7l
+⢎⡰ Installing CNI 🔌 [?7h[?7l
+⢎⡠ Installing CNI 🔌 [?7h
+ [32m✓[0m Installing CNI 🔌
+[?7l
+⠈⠁ Installing StorageClass 💾 [?7h[?7l
+⠈⠑ Installing StorageClass 💾 [?7h[?7l
+⠈⠱ Installing StorageClass 💾 [?7h[?7l
+⠈⡱ Installing StorageClass 💾 [?7h[?7l
+⢀⡱ Installing StorageClass 💾 [?7h[?7l
+⢄⡱ Installing StorageClass 💾 [?7h
+ [32m✓[0m Installing StorageClass 💾
+[?7l
+⠈⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠑ Joining worker nodes 🚜 [?7h[?7l
+⠈⠱ Joining worker nodes 🚜 [?7h[?7l
+⠈⡱ Joining worker nodes 🚜 [?7h[?7l
+⢀⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢆⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡰ Joining worker nodes 🚜 [?7h[?7l
+⢎⡠ Joining worker nodes 🚜 [?7h[?7l
+⢎⡀ Joining worker nodes 🚜 [?7h[?7l
+⢎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠊⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠑ Joining worker nodes 🚜 [?7h[?7l
+⠈⠱ Joining worker nodes 🚜 [?7h[?7l
+⠈⡱ Joining worker nodes 🚜 [?7h[?7l
+⢀⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢆⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡰ Joining worker nodes 🚜 [?7h[?7l
+⢎⡠ Joining worker nodes 🚜 [?7h[?7l
+⢎⡀ Joining worker nodes 🚜 [?7h[?7l
+⢎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠊⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠑ Joining worker nodes 🚜 [?7h[?7l
+⠈⠱ Joining worker nodes 🚜 [?7h[?7l
+⠈⡱ Joining worker nodes 🚜 [?7h[?7l
+⢀⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢆⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡰ Joining worker nodes 🚜 [?7h[?7l
+⢎⡠ Joining worker nodes 🚜 [?7h[?7l
+⢎⡀ Joining worker nodes 🚜 [?7h[?7l
+⢎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠊⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠑ Joining worker nodes 🚜 [?7h[?7l
+⠈⠱ Joining worker nodes 🚜 [?7h[?7l
+⠈⡱ Joining worker nodes 🚜 [?7h[?7l
+⢀⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢆⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡰ Joining worker nodes 🚜 [?7h[?7l
+⢎⡠ Joining worker nodes 🚜 [?7h[?7l
+⢎⡀ Joining worker nodes 🚜 [?7h[?7l
+⢎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠊⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠑ Joining worker nodes 🚜 [?7h[?7l
+⠈⠱ Joining worker nodes 🚜 [?7h[?7l
+⠈⡱ Joining worker nodes 🚜 [?7h[?7l
+⢀⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢆⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡰ Joining worker nodes 🚜 [?7h[?7l
+⢎⡠ Joining worker nodes 🚜 [?7h[?7l
+⢎⡀ Joining worker nodes 🚜 [?7h[?7l
+⢎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠊⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠑ Joining worker nodes 🚜 [?7h[?7l
+⠈⠱ Joining worker nodes 🚜 [?7h[?7l
+⠈⡱ Joining worker nodes 🚜 [?7h[?7l
+⢀⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h[?7l
+⢆⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡱ Joining worker nodes 🚜 [?7h[?7l
+⢎⡰ Joining worker nodes 🚜 [?7h[?7l
+⢎⡠ Joining worker nodes 🚜 [?7h[?7l
+⢎⡀ Joining worker nodes 🚜 [?7h[?7l
+⢎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠎⠁ Joining worker nodes 🚜 [?7h[?7l
+⠊⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠁ Joining worker nodes 🚜 [?7h[?7l
+⠈⠑ Joining worker nodes 🚜 [?7h[?7l
+⠈⠱ Joining worker nodes 🚜 [?7h[?7l
+⠈⡱ Joining worker nodes 🚜 [?7h[?7l
+⢀⡱ Joining worker nodes 🚜 [?7h[?7l
+⢄⡱ Joining worker nodes 🚜 [?7h
+ [32m✓[0m Joining worker nodes 🚜
 Set kubectl context to "kind-redis-lab"
 You can now use your cluster with:
 
