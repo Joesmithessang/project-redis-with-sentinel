@@ -1,15 +1,27 @@
-# Project 4 — the ONLY place redis-cli exists: spec says "redis-cli runs inside
-# the pods - do not install it on the host." Every check in commands.sh runs
-# through this pod via kubectl exec
-apiVersion: v1
-kind: Pod
+# Project 4 — the ONLY place redis-cli exists: Every check in commands.sh runs
+# through this pod via kubectl exec.
+#
+# Deployment, not a bare Pod: A bare Pod has no controller, so if
+# it lands on the drained node it's evicted and gone for good — every
+# redis-cli call in the project runs through this one pod, so losing it
+# permanently would mean no recovery path short of manually reapplying a manifest.
+
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: redis-client
-  labels:
-    app: redis-client-${STUDENT_ID}
 spec:
-  containers:
-    - name: cli
-      image: redis:7-alpine
-      imagePullPolicy: IfNotPresent
-      command: ["sh", "-c", "sleep infinity"]
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-client-${STUDENT_ID}
+  template:
+    metadata:
+      labels:
+        app: redis-client-${STUDENT_ID}
+    spec:
+      containers:
+        - name: cli
+          image: redis:7-alpine
+          imagePullPolicy: IfNotPresent
+          command: ["sh", "-c", "sleep infinity"]

@@ -65,7 +65,7 @@ kubectl apply -n "$NS" -f manifests/rendered/05-client-pod.yaml
 echo "== [4/5] waiting for readiness =="
 kubectl -n "$NS" rollout status "statefulset/redis-${STUDENT_ID}"    --timeout=420s
 kubectl -n "$NS" rollout status "statefulset/sentinel-${STUDENT_ID}" --timeout=420s
-kubectl -n "$NS" wait --for=condition=Ready pod/redis-client --timeout=180s
+kubectl -n "$NS" wait --for=condition=Available deployment/redis-client --timeout=180s
 
 # 5. Seed: 50 keys + owner=<ID> (Task 5)
 echo "== [5/5] seeding =="
@@ -75,7 +75,7 @@ kubectl -n "$NS" wait --for=condition=complete "job/seed-${STUDENT_ID}" --timeou
 END=$(date +%s)
 ELAPSED=$((END-START))
 kubectl -n "$NS" get pods -o wide
-echo "MASTER: $(kubectl -n "$NS" exec redis-client -- redis-cli -h sentinel-svc -p 26379 --raw \
+echo "MASTER: $(kubectl -n "$NS" exec deploy/redis-client -- redis-cli -h sentinel-svc -p 26379 --raw \
   sentinel get-master-addr-by-name "mymaster-${STUDENT_ID}" | head -n1)"
 printf 'bootstrap %s completed in %s seconds (%s)\n' "$STUDENT_ID" "$ELAPSED" "$(date -Is)" \
   | tee -a evidence/bootstrap-timing.log

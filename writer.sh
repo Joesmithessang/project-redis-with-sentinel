@@ -7,7 +7,7 @@ set -uo pipefail
 STUDENT_ID="${1:-jeessang}"
 NS="redis-${STUDENT_ID}"
 MASTER_NAME="mymaster-${STUDENT_ID}"
-POD="redis-client"
+POD="deploy/redis-client"
 
 get_master() {
   kubectl -n "$NS" exec "$POD" -- redis-cli -h sentinel-svc -p 26379 --raw \

@@ -33,16 +33,16 @@ kubectl -n "$NS" exec redis-${STUDENT_ID}-0 -- redis-cli info replication
 ########################################################
 # PART 2 - Prove the data is yours (owner key + seed keys)
 ########################################################
-kubectl -n "$NS" exec redis-client -- redis-cli -h redis-${STUDENT_ID}-2.redis-hl get owner
+kubectl -n "$NS" exec deploy/redis-client -- redis-cli -h redis-${STUDENT_ID}-2.redis-hl get owner
 # -> jeessang
-kubectl -n "$NS" exec redis-client -- redis-cli -h redis-${STUDENT_ID}-1.redis-hl \
+kubectl -n "$NS" exec deploy/redis-client -- redis-cli -h redis-${STUDENT_ID}-1.redis-hl \
   --scan --pattern "${STUDENT_ID}:seed:*" | wc -l
 # -> 50
 
 ########################################################
 # PART 3 - Prove replicas reject writes (Task 7)
 ########################################################
-kubectl -n "$NS" exec redis-client -- redis-cli -h redis-${STUDENT_ID}-1.redis-hl set canary 1
+kubectl -n "$NS" exec deploy/redis-client -- redis-cli -h redis-${STUDENT_ID}-1.redis-hl set canary 1
 # -> (error) READONLY You can't write against a read only replica.
 
 ########################################################
@@ -79,7 +79,7 @@ kubectl uncordon "$NODE"
 ########################################################
 NEWM=$(kubectl -n "$NS" exec sentinel-${STUDENT_ID}-0 -- redis-cli -p 26379 --raw \
        sentinel get-master-addr-by-name "$MASTER_NAME" | head -n1)
-kubectl -n "$NS" exec redis-client -- redis-cli -h "$NEWM" --scan --pattern "${STUDENT_ID}:live:*" | wc -l
+kubectl -n "$NS" exec deploy/redis-client -- redis-cli -h "$NEWM" --scan --pattern "${STUDENT_ID}:live:*" | wc -l
 # compare this count against writer.sh's last printed counter -> that's your lost-write number
 
 kubectl -n "$NS" exec redis-${STUDENT_ID}-0 -- redis-cli info replication | head -5

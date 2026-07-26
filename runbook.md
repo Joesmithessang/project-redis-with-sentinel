@@ -46,6 +46,13 @@ already run. Every command below also lives in `commands.sh`, section-tagged.
   arithmetic about the failover timeline should be computed from `writer.sh`'s own
   printed timestamps, not from dividing `down-after-milliseconds` by an assumed
   1000ms period.
+- **`redis-client` is a Deployment, not a bare Pod.** Node drain is a listed twist
+  method, and a bare Pod has no controller to recreate it — if it happened to land
+  on the drained node it would be evicted permanently, and every `redis-cli` call in
+  the project runs through that one pod, so losing it would break the rest of any
+  demo depending on node drain. A Deployment self-heals the same way the
+  redis/sentinel StatefulSets already do; the trade-off is addressing it as
+  `deploy/redis-client` in every command instead of a literal pod name.
 
 ## 1. Bootstrap from nothing
 
@@ -84,7 +91,7 @@ Point at, in order: `+sdown` → `+odown` → `+vote-for-leader` → `+switch-ma
 ```bash
 NEWM=$(kubectl -n redis-jeessang exec sentinel-jeessang-0 -- redis-cli -p 26379 --raw \
        sentinel get-master-addr-by-name mymaster-jeessang | head -n1)
-kubectl -n redis-jeessang exec redis-client -- redis-cli -h "$NEWM" \
+kubectl -n redis-jeessang exec deploy/redis-client -- redis-cli -h "$NEWM" \
   --scan --pattern "jeessang:live:*" | wc -l
 ```
 `lost = writer's last counter − key count`. Explain the gap against the Sentinel log
