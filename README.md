@@ -51,14 +51,15 @@ kubectl get pods -n redis-jeessang -o wide       # 3 redis + 3 sentinel + redis-
 kubectl get pods -n redis-jeessang -w            # watch it converge, Ctrl-C when steady
 ```
 
-Then follow **`commands.sh`** section by section
-`commands.sh`: run it alongside `runbook.md`, not all at once.
+Then follow **`runbook.md`** section by section — it's the single source of truth
+for every command, from identifying the master through cleanup. `commands.sh` is
+kept as a scratch copy for now; once `runbook.md` is trusted, it goes away.
 
 ## 3. Cleanup — order matters
 
 ```bash
-# on your host: run the CLEANUP section of commands.sh
-#   (kills the writer loop, deletes the namespace, deletes the kind cluster)
+# on your host: run runbook.md §10 (kills the writer loop, deletes the
+# namespace, deletes the kind cluster)
 kind delete cluster --name redis-lab
 ```
 
@@ -72,8 +73,8 @@ kind delete cluster --name redis-lab
 | File | Purpose |
 |---|---|
 | `bootstrap.sh` | Full unattended build: kind cluster, namespace, manifests, wait-for-ready, seed.
-| `commands.sh` | Section-by-section walkthrough for the live demo and rehearsal — run manually, not as a script. |
+| `commands.sh` | Older section-by-section command scratchpad, superseded by `runbook.md` — kept temporarily, not required reading. |
 | `writer.sh` | Continuous writer that discovers the master via `SENTINEL get-master-addr-by-name`, never hardcodes a pod name. |
-| `runbook.md` | The seven required operating procedures with exact, tested commands. |
+| `runbook.md` | Single source of truth: design decisions plus every exact, tested command for bootstrap, verification, failover, and cleanup. |
 | `manifests/` | `kind-config.yaml` + all rendered-at-bootstrap YAML (namespace, redis StatefulSet + config, sentinel StatefulSet + config, client pod, seed Job). |
 | `evidence/` | `bootstrap-timing.log` and one full failover capture, per submission requirements. |
