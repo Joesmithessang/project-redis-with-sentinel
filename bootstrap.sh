@@ -50,13 +50,8 @@ else
 fi
 kubectl cluster-info --context "kind-${CLUSTER}" >/dev/null
 
-# 3. Pre-load the image into all nodes
-echo "== [3/6] pre-loading redis:7-alpine =="
-docker pull redis:7-alpine
-kind load docker-image redis:7-alpine --name "$CLUSTER"
-
-# 4. Namespace + manifests
-echo "== [4/6] applying manifests to namespace ${NS} =="
+# 3. Namespace + manifests
+echo "== [3/5] applying manifests to namespace ${NS} =="
 kubectl apply -f manifests/rendered/00-namespace.yaml
 kubectl apply -n "$NS" -f manifests/rendered/01-redis-config.yaml
 kubectl apply -n "$NS" -f manifests/rendered/02-redis-statefulset.yaml
@@ -64,14 +59,14 @@ kubectl apply -n "$NS" -f manifests/rendered/03-sentinel-config.yaml
 kubectl apply -n "$NS" -f manifests/rendered/04-sentinel-statefulset.yaml
 kubectl apply -n "$NS" -f manifests/rendered/05-client-pod.yaml
 
-# 5. Wait for readiness (kubectl wait / rollout status, not sleep)
-echo "== [5/6] waiting for readiness =="
+# 4. Wait for readiness (kubectl wait / rollout status, not sleep)
+echo "== [4/5] waiting for readiness =="
 kubectl -n "$NS" rollout status "statefulset/redis-${STUDENT_ID}"    --timeout=420s
 kubectl -n "$NS" rollout status "statefulset/sentinel-${STUDENT_ID}" --timeout=420s
 kubectl -n "$NS" wait --for=condition=Ready pod/redis-client --timeout=180s
 
-# 6. Seed: 50 keys + owner=<ID> (Task 5)
-echo "== [6/6] seeding =="
+# 5. Seed: 50 keys + owner=<ID> (Task 5)
+echo "== [5/5] seeding =="
 kubectl apply -n "$NS" -f manifests/rendered/06-seed-job.yaml
 kubectl -n "$NS" wait --for=condition=complete "job/seed-${STUDENT_ID}" --timeout=300s
 
