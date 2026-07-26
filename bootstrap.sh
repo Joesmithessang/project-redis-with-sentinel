@@ -35,7 +35,7 @@ if ! command -v kind >/dev/null 2>&1; then
 fi
 
 # 1. Render manifests — single variable, no hand-typed IDs (Task 8)
-echo "== [1/6] rendering manifests for ${STUDENT_ID} =="
+echo "== [1/5] rendering manifests for ${STUDENT_ID} =="
 rm -rf manifests/rendered && mkdir -p manifests/rendered evidence
 for f in manifests/*.yaml; do
   base=$(basename "$f")
@@ -44,7 +44,7 @@ for f in manifests/*.yaml; do
 done
 
 # 2. kind cluster — 1 control-plane + 2 workers, no EKS, no managed AWS
-echo "== [2/6] creating kind cluster =="
+echo "== [2/5] creating kind cluster =="
 if ! kind get clusters | grep -qx "$CLUSTER"; then
   kind create cluster --name "$CLUSTER" --config manifests/kind-config.yaml
 else
