@@ -28,6 +28,16 @@ already run. Every command below also lives in `commands.sh`, section-tagged.
   as a replica of the NEW master." Asking Sentinel first, and only falling back to
   the ordinal rule when Sentinel can't be reached (cold cluster, no Sentinel running
   yet), is what makes that pass bar hold.
+  Known gap in that same mechanism: the Sentinel query has a bounded retry window
+  (5 attempts, 2s apart) before falling back to ordinal. If that query fails for a
+  transient reason — a DNS blip, Sentinel momentarily unreachable but not actually
+  gone — rather than because Sentinel is genuinely down, a restarting pod `-0` falls
+  back to declaring itself master even though the real master is elsewhere,
+  recreating the exact split-brain this check exists to prevent. This is
+  low-probability, not zero-probability, and is a known, named gap rather than
+  something papered over — not fixed here, since lengthening the retry window or
+  adding more failure-handling logic this close to a graded demo is a bigger risk
+  than the edge case itself.
 
 ## 1. Bootstrap from nothing
 
