@@ -17,6 +17,17 @@ already run. Every command below also lives in `commands.sh`, section-tagged.
   read-only; observed failure with a direct mount: the pod exits immediately with
   `Sentinel config file /etc/sentinel/sentinel.conf is not writable: Read-only file
   system` and enters CrashLoopBackOff.
+- **`start-redis.sh` asks Sentinel for the current master before falling back to the
+  pod-ordinal rule — intentional, not a miss on Task 2's wording.** Task 2 says
+  "decide by pod ordinal," but a pure, unconditional ordinal rule means pod `-0`
+  always tries to boot as master, and nothing in Sentinel's design self-corrects
+  that: Sentinel learns about replicas by reading `INFO replication` off the master
+  it already knows, not by scanning for a rogue new master. So an unconditional
+  ordinal rule produces a real split-brain (two masters accepting writes) the moment
+  pod `-0` restarts after a failover — which fails the pass bar "old master rejoins
+  as a replica of the NEW master." Asking Sentinel first, and only falling back to
+  the ordinal rule when Sentinel can't be reached (cold cluster, no Sentinel running
+  yet), is what makes that pass bar hold.
 
 ## 1. Bootstrap from nothing
 
