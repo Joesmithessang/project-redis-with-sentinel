@@ -38,6 +38,14 @@ already run. Every command below also lives in `commands.sh`, section-tagged.
   something papered over — not fixed here, since lengthening the retry window or
   adding more failure-handling logic this close to a graded demo is a bigger risk
   than the edge case itself.
+- **`writer.sh`'s loop isn't a true 1/sec cadence.** Each iteration is `sleep 1`
+  plus a real `kubectl exec` round-trip (network + exec overhead), so consecutive
+  writes land roughly every 1.2-1.5s in practice, not exactly 1.000s. This doesn't
+  affect the loss-count or pass/fail logic — that compares actual keys against the
+  actual printed counter, never an assumed cadence — but any oral-question
+  arithmetic about the failover timeline should be computed from `writer.sh`'s own
+  printed timestamps, not from dividing `down-after-milliseconds` by an assumed
+  1000ms period.
 
 ## 1. Bootstrap from nothing
 
