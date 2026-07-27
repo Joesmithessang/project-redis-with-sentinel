@@ -98,7 +98,7 @@ failover window; a `REDISCOVERED` line marks re-discovery via Sentinel.
 ## 6. Watch a failover live
 
 Two terminals: start the write loop first (#5), then in a second terminal:
-# terminal B: (consider terminal C: k"ubectl get pods -n redis-jeessang -o wide -w" to watch pod 
+# terminal B: (consider terminal C: "kubectl get pods -n redis-jeessang -o wide -w" to watch pod 
 # creation/termination, and terminal D: to execute failover trigger)
 ```bash
 kubectl -n redis-jeessang logs -f sentinel-jeessang-0
@@ -134,7 +134,7 @@ echo "current master pod: $POD"
 kubectl -n redis-jeessang exec "$POD" -- redis-cli -h 127.0.0.1 debug sleep 60
 ```
 ```bash
-# method 3 - drain the node the master runs on:
+# method 3a - drain the node the master runs on:
 M=$(kubectl -n redis-jeessang exec sentinel-jeessang-0 -- redis-cli -p 26379 --raw \
     sentinel get-master-addr-by-name mymaster-jeessang | head -n1)
 POD=${M%%.*}
@@ -143,6 +143,17 @@ kubectl -n redis-jeessang get pods -o wide | grep -E "$POD|sentinel"   # see wha
 NODE=$(kubectl -n redis-jeessang get pod "$POD" -o jsonpath='{.spec.nodeName}')
 kubectl drain "$NODE" --ignore-daemonsets --delete-emptydir-data --force
 kubectl uncordon "$NODE"
+```
+```bash
+# method 3b - drain the node the master runs on - using --pod-selector
+M=$(kubectl -n redis-jeessang exec sentinel-jeessang-0 -- redis-cli -p 26379 --raw \
+    sentinel get-master-addr-by-name mymaster-jeessang | head -n1)
+POD=${M%%.*}
+echo "current master pod: $POD"
+NODE=$(kubectl -n redis-jeessang get pod "$POD" -o jsonpath='{.spec.nodeName}')
+echo "master's node: $NODE"
+kubectl drain "$NODE" --pod-selector="app=redis-jeessang" \
+  --ignore-daemonsets --delete-emptydir-data --force
 ```
 `writer.sh` should print a handful of `LOST` lines, then `REDISCOVERED`, then `OK`
 again.
@@ -170,7 +181,14 @@ Fields to read: `num-other-sentinels`, `quorum`, `flags`.
 
 # delete one Sentinel pod and re-run ckquorum
 ```bash
-kubectl -n redis-jeessang get pod sentinel-jeessang-1 -w   # confirm it's back Running
+kubectl -n redis-jeessang delete pod sentinel-jeessang-1
+
+# or scale the StatefulSet down, controller not allowed to restart it:
+kubectl -n redis-jeessang scale statefulset sentinel-jeessang --replicas=2
+kubectl -n redis-jeessang scale statefulset sentinel-jeessang --replicas=3 # revert
+
+# confirm it's back Running
+kubectl -n redis-jeessang get pod sentinel-jeessang-1 -w   
 kubectl -n redis-jeessang exec sentinel-jeessang-0 -- \
   redis-cli -p 26379 sentinel master mymaster-jeessang | grep -A1 -E 'num-other-sentinels|flags'
 kubectl -n redis-jeessang exec sentinel-jeessang-0 -- \
